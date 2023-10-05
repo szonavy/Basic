@@ -1,4 +1,4 @@
-package practice.basicexcercise._01;
+package practice.basicexcercise._01_inout;
 
 import java.util.Scanner;
 
