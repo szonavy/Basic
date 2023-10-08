@@ -1,4 +1,4 @@
-package practice.basicexcercise._04_factorial;
+package practice.basicexcercise._05_factorial;
 
 import java.util.Scanner;
 
