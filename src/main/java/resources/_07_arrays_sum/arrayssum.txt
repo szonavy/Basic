@@ -1,0 +1,8 @@
+This is an array:
+   int[] szamok = new int[100];
+
+        for(int i = 0; i < 100; i++){
+            szamok[i] = i % 7;
+        }
+
+Get a number from the console (between -1 and 7) and count how many times the number appears in the stack.
