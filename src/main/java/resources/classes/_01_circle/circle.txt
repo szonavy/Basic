@@ -1,0 +1,82 @@
+
+1. Create the following class:
+    name: Circle
+    fields:
+       - radius   (double)
+       - color    (String)
+    constructors:
+       - Circle()
+       - Circle(double radius)
+    methods:
+        getRadius()         (return values are double, returns the radius values)
+        getArea()           (return value is double, return the area of the circle)
+
+2. Create a Main class
+    name: Main
+    contains only the public static void main method
+
+    Create 3 objects in this class.
+
+    -radius 15, red circle
+    -radius 16.7, blue circle
+    -radius 1.5, green circle
+ A: Write out their values and the area on the screen
+ B: Increase double the value of the radius of the green circle
+ C: Print the new area of the green circle
+
+3. Create an Employee class
+   name: Employee
+   fields:
+        - id            int
+        - firstName     String
+        - lastName      String
+        - salary        int
+   constructor:
+           - one constructor, which can configure all the 4 fields:   Employee(id, firstName, lastName, salary)
+   methods:
+           - getName()                 - return value String, return with the Employee's full name
+           - getAnnualSalary()         - return value int, return with annual salary
+           - raiseSalary(int percent)  - there aren't return value, increase the salary with the given percent
+
+4. Create an Account class
+    name: Account
+    fields:
+          - id            int
+          - name          String
+          - balance       int
+    constructors:
+          - Account(id, name)
+          - Account(id, name, balance)
+
+    methods:
+          - credit(int amount)       - there aren't return value, increase the value of the balance with the given amount
+          - debit(int amount)        - there aren't return value, decrease the value of the balance with the given amount, but if the value of the new amount less than 0,
+                                        we don't decrease it just on the console "amount exceeded"
+          - transferTo(Account anotherAccount, int amount)     - there aren't return value, if the value of the balance greater,
+                                                                than the amount, we can move the value of the amount from the balance to anotherAccount balance,
+                                                                otherwise write on the console:  "amount exceeded"
+
+5.In the main class/methods create an employee and an account object
+
+    - let there be 4 employees : T, V, A, Z
+    - salary: greater than 0 (optional), id all of them different int
+    - let there be 4 accounts: everybody has one (the name reflects the owner)
+    - id different and the balance greater than 0, optional int
+
+6.
+    - Write the values of the employees (full name, annual salary)
+    - Increase T's salary double, A's salary with 10 percent
+    - Write the values of the employees (full name, annual salary) again
+
+7.
+    - write the values of the accounts to the console
+    - Add 100 amount to T's account ( with methods) - write the value of the new balance
+    - Transfer from T's account 50 to V's account -  Write T and V's values of account.
+    - Spend 50 from V's account and write the new value on the console
+    - Spend 10.0000 from V's account
+
+
+
+
+
+
