@@ -1,29 +1,3 @@
-
-1. Create the following class:
-    name: Circle
-    fields:
-       - radius   (double)
-       - color    (String)
-    constructors:
-       - Circle()
-       - Circle(double radius)
-    methods:
-        getRadius()         (return values are double, returns the radius values)
-        getArea()           (return value is double, return the area of the circle)
-
-2. Create a Main class
-    name: Main
-    contains only the public static void main method
-
-    Create 3 objects in this class.
-
-    -radius 15, red circle
-    -radius 16.7, blue circle
-    -radius 1.5, green circle
- A: Write out their values and the area on the screen
- B: Increase double the value of the radius of the green circle
- C: Print the new area of the green circle
-
 3. Create an Employee class
    name: Employee
    fields:
@@ -64,7 +38,7 @@
     - id different and the balance greater than 0, optional int
 
 6.
-    - Write the values of the employees (full name, annual salary)
+    - Write out the values of the employees (full name, annual salary)
     - Increase T's salary double, A's salary with 10 percent
     - Write the values of the employees (full name, annual salary) again
 
@@ -74,9 +48,3 @@
     - Transfer from T's account 50 to V's account -  Write T and V's values of account.
     - Spend 50 from V's account and write the new value on the console
     - Spend 10.0000 from V's account
-
-
-
-
-
-

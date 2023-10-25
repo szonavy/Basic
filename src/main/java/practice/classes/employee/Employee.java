@@ -22,7 +22,7 @@ public class Employee {
         return salary * 12;
     }
 
-    public int raiseSalary(int percent){
-        return salary + salary * (percent / 100);
+    public void raiseSalary(int percent){
+        salary += (salary * (percent / 100.));
     }
 }
