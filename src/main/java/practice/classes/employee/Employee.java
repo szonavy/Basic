@@ -15,7 +15,7 @@ public class Employee {
     }
 
     public String getName(){
-        return firstName + " " + lastName;
+        return firstName + " " + this.lastName;
     }
 
     public int getAnnualSalary(){
