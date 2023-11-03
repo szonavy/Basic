@@ -12,7 +12,7 @@ public class Anagrams {
         String b = "Hello".toLowerCase();
         Map<Character,Integer> aStrings = new HashMap<>();
         Map<Character,Integer> bStrings = new HashMap<>();
-     
+
 
 
         for(int i = 0; i < a.length(); i++){
