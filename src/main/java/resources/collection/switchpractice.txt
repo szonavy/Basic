@@ -1,0 +1,20 @@
+write a program, with the help of a switch (for the operation signal), which includes a simple operation on the screen, which could be the following:
+
+- addition
+- subtraction
+- multiple
+- division
+
+- the program performs the given operation and displays the result on the screen
+- the invalid input should also be processed / written out
+
+
+- the input is a whole line, the type of which is String
+
+e.g:
+
+input: 15 * 10
+output: 150
+
+input: 15 % 10
+output: % operation cannot be interpreted
