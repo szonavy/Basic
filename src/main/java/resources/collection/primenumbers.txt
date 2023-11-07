@@ -1,0 +1,13 @@
+write a program that enters a number from the screen, sums it up and displays how many prime numbers there are from 0 to the received number
+
+- you have to use while to solve the problem
+- create methods
+- (practically, you can list the prime numbers and write the result only at the end)
+
+e.g:
+input: 23
+
+outputs:
+There are 8 prime numbers up to 23: [2, 3, 5, 7, 11, 13, 17, 23]
+
+prime numbers
