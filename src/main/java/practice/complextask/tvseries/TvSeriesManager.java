@@ -53,7 +53,11 @@ public class TvSeriesManager {
         int hr;
         int min;
 
-        
+        day = watchedepisodes / (60*24);
+        hr = (watchedepisodes - (day * (60*24))) / 60;
+        min = watchedepisodes - ((day * (60*24)) + hr * 60);
+
+        System.out.println("The user spent " + day + " days " +hr + " hours " + min + " minutes with watching the tv series.");
 
 
 
