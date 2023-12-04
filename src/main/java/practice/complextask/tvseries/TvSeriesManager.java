@@ -5,6 +5,7 @@ import java.util.*;
 public class TvSeriesManager {
     public static void main(String[] args) {
         String fileIn = "src/main/java/resources/complextasks/tvseries/lista-1.txt";
+        String fileOut = "src/main/java/resources/complextasks/tvseries/summa.txt";
 
         MyFileReader reader = new MyFileReader(fileIn);
         List<String> rows = reader.readLines();
@@ -100,12 +101,36 @@ public class TvSeriesManager {
             }
         }
         if(seriesOnTheSameDay.isEmpty()){
-            System.out.println("There weren't any tv series on that day.");
+            System.out.println("There wasn't any tv series on that day.");
         }else{
             System.out.println(seriesOnTheSameDay);
         }
 
         System.out.println("\nTask 8:");
+        MyFileWriter writer = new MyFileWriter(fileOut);
+        Map<String,Integer> epsisodeTime = new HashMap<>();
+        Map<String,Integer> epsisodeNumber = new HashMap<>();
+
+        for(TvSeriesData da : data){
+            if(epsisodeTime.isEmpty()|| !epsisodeTime.containsKey(da.name)){
+                epsisodeTime.put(da.name,da.time);
+            }else{
+                epsisodeTime.put(da.name,epsisodeTime.get(da.name)+da.time);
+            }
+
+            if(epsisodeNumber.isEmpty()|| !epsisodeNumber.containsKey(da.name)){
+                epsisodeNumber.put(da.name,1);
+            }else{
+                epsisodeNumber.put(da.name,epsisodeNumber.get(da.name)+1);
+            }
+        }
+
+        for(String s: epsisodeTime.keySet()){
+            System.out.println(s + " " + epsisodeTime.get(s) + " " + epsisodeNumber.get(s));
+            writer.writeIntoFile(s + " " + epsisodeTime.get(s) + " " + epsisodeNumber.get(s) + "\n");
+        }
+
+
 
 
 
