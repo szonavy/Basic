@@ -8,9 +8,9 @@ public class SubjectAdministration {
     String name;
     String subject;
     String schoolClass;
-    String subjectNumber;
+    int subjectNumber;
 
-    public SubjectAdministration(String name, String subject, String schoolClass, String subjectNumber) {
+    public SubjectAdministration(String name, String subject, String schoolClass, int subjectNumber) {
         this.name = name;
         this.subject = subject;
         this.schoolClass = schoolClass;
