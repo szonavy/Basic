@@ -63,6 +63,33 @@ public class SubjectManager {
             System.out.println(f + "-" + formerTeacher.get(f));
         }
 
+        System.out.println("\nTask 6:");
+        System.out.println("Please give me class and a subject, like: \n10.b \nkemia");
+
+        String requestedClass = sc.next();
+        String requestedSubject = sc.next();
+
+        int countDistribution = 0;
+        for(SubjectAdministration da : data){
+            if(da.schoolClass.equals(requestedClass) && da.subject.equals(requestedSubject)){
+                countDistribution++;
+            }
+        }
+        if(countDistribution > 1){
+            System.out.println("The specified class studies the given subject in groups.");
+        }else{
+            System.out.println("The specified class studies the given subject at the class level");
+        }
+
+        System.out.println("\nTask 7:");
+        Set<String> teachers = new HashSet<>();
+
+        for(SubjectAdministration da : data){
+            teachers.add(da.name);
+        }
+        System.out.println("There are " + teachers.size() + " teachers work in the school.");
+
+
 
 
     }
