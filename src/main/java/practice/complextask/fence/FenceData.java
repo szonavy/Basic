@@ -4,23 +4,22 @@ public class FenceData {
     int houseNumber;
     int oddOrEven;
     int meter;
-    int fenceColor;
+    String fenceColor;
 
-    static int oddNumber = 0;
-    static int evenNumber = 0;
+    public static int oddNumber = -1;
+    public static int evenNumber = 0;
 
-    public FenceData(int houseNumber, int oddOrEven, int meter, int fenceColor) {
-        this.houseNumber = houseNumber;
+    public FenceData(int oddOrEven, int meter, String fenceColor) {
         this.oddOrEven = oddOrEven;
         this.meter = meter;
         this.fenceColor = fenceColor;
 
         if(oddOrEven == 0){
-            evenNumber++;
-            houseNumber = evenNumber;
+            evenNumber+=2;
+            this.houseNumber = evenNumber;
         }else{
-            oddNumber++;
-            houseNumber = oddNumber;
+            oddNumber+=2;
+            this.houseNumber = oddNumber;
         }
     }
 
