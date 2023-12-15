@@ -64,9 +64,38 @@ public class FenceManager {
                 owner = data.get(i);
                 neighbour2 = data.get(i+1);
                 System.out.println(wichColour(neighbour1.fenceColor,owner.fenceColor,neighbour2.fenceColor));
-
             }
         }
+
+        System.out.println("\nTask 6:");
+        String up = "";
+        String down = "";
+        for(FenceData d: data){
+            if(d.oddOrEven == 1){
+                for(int i = 0; i < d.meter; i++){
+                    up += d.fenceColor;
+                    if(i == 0){
+                        down += d.houseNumber;
+                    }else{
+                        if(d.houseNumber < 10){
+                                down += " ";
+                        }
+                        if(d.houseNumber > 9 && d.houseNumber < 100){
+                            if(i > 1){
+                                down += " ";
+                            }
+                        }
+                        if(d.houseNumber > 99){
+                            if(i > 2){
+                                down += " ";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println(up);
+        System.out.println(down);
     }
 
     static String wichColour(String ne1Color, String ownerColor, String n2Color){
