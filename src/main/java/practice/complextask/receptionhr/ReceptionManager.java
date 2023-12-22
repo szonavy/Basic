@@ -1,8 +1,7 @@
 package practice.complextask.receptionhr;
 
-import practice.a_common.MyFileReader;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReceptionManager {
@@ -17,7 +16,7 @@ public class ReceptionManager {
         String firstName;
         int receptionHr;
         int receptionMin;
-        BookingDeatils det;
+        BookingDetails det;
         int year;
         int month;
         int day;
@@ -43,7 +42,7 @@ public class ReceptionManager {
             hr = Integer.parseInt(cuttingHr[0]);
             min = Integer.parseInt(cuttingHr[1]);
 
-            det = new BookingDeatils(year,month,day,hr,min);
+            det = new BookingDetails(year,month,day,hr,min);
             TeacherDetails tDet = new TeacherDetails(lastName,firstName,receptionHr,receptionMin,det);
 
             details.add(tDet);
@@ -82,6 +81,26 @@ public class ReceptionManager {
             }
         }
         return teachers;
+    }
+
+    public BookingDetails createTheAppointments(List<TeacherDetails> dat){
+        List<BookingDetails> appointments = new ArrayList<>();
+        for(TeacherDetails d : dat){
+            appointments.add(d.parents);
+        }
+        Collections.sort(appointments,new ComparatorByDate());
+        return appointments.get(0);
+    }
+
+    public TeacherDetails findTheFirstBookedTeacherMeeting(){
+        BookingDetails booked = createTheAppointments(details);
+
+        for(TeacherDetails d : details){
+            if(d.parents.equals(booked)){
+                return d;
+            }
+        }
+        return null;
     }
 
 

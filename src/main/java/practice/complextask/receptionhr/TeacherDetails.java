@@ -7,9 +7,9 @@ public class TeacherDetails implements Comparator<TeacherDetails> {
     String firstName;
     int receptionHr;
     int receptionMin;
-    BookingDeatils parents;
+    BookingDetails parents;
 
-    public TeacherDetails(String lastName, String firstName, int receptionHr, int receptionMin, BookingDeatils parents) {
+    public TeacherDetails(String lastName, String firstName, int receptionHr, int receptionMin, BookingDetails parents) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.receptionHr = receptionHr;

@@ -39,6 +39,15 @@ public class ReceptionMain {
         Collections.sort(first);
         System.out.println(first);
 
+        System.out.println("\nTask 5:");
+        TeacherDetails teacher = manager.findTheFirstBookedTeacherMeeting();
+        System.out.println("The teacher's name is : " + teacher.lastName + " " + teacher.firstName);
+        System.out.println("The booked time is : " + teacher.receptionHr + ":" + teacher.receptionMin);
+        BookingDetails bookedDate = teacher.parents;
+        System.out.println("The appointment was booked on: " + bookedDate.year + "." + bookedDate.month + "." + bookedDate.day + "-" + bookedDate.hr + ":" + bookedDate.min );
+
+
+
 
 
 
