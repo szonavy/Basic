@@ -51,5 +51,21 @@ public class ReceptionManager {
 
     }
 
-    
+    public int numberOfbookingRecords(){
+        return details.size();
+    }
+
+    public int requestedTeacherBookedAppointments(String lName, String fName){
+        int count = 0;
+        for(TeacherDetails d: details){
+            if(d.lastName.equals(lName) && d.firstName.equals(fName)){
+               count++;
+            }
+        }
+        return count;
+
+    }
+
+
+
 }
