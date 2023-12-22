@@ -63,7 +63,25 @@ public class ReceptionManager {
             }
         }
         return count;
+    }
 
+    public List<Integer> cutTheTime(String line){
+        List<Integer> time = new ArrayList<>();
+        String[] cutTime = line.split(":");
+        time.add(Integer.parseInt(cutTime[0]));
+        time.add(Integer.parseInt(cutTime[1]));
+        return time;
+    }
+
+    public List<String> teachersSameAppointments(int hr, int min){
+        List<String> teachers = new ArrayList<>();
+        for(TeacherDetails d : details){
+            if(d.receptionHr == hr && d.receptionMin == min){
+                String name = d.lastName + " " + d.firstName;
+                teachers.add(name);
+            }
+        }
+        return teachers;
     }
 
 

@@ -2,6 +2,7 @@ package practice.complextask.receptionhr;
 
 import practice.a_common.MyFileReader;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +30,17 @@ public class ReceptionMain {
         }else {
             System.out.println("There are " + appointments + " appointments with the specified teacher.");
         }
-        
+
+        System.out.println("\nTask 4:");
+        System.out.println("Please give me an appointment like 17:40 : ");
+        String time = sc.next();
+        List<Integer> sepTime = manager.cutTheTime(time);
+        List<String> first = manager.teachersSameAppointments(sepTime.get(0),sepTime.get(1));
+        Collections.sort(first);
+        System.out.println(first);
+
+
+
 
 
 
