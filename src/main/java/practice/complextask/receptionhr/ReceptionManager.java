@@ -102,6 +102,51 @@ public class ReceptionManager {
         }
         return null;
     }
+    public List<String> bookedAppointments(){
+        List<String> teachersAppointments = new ArrayList<>();
+        for(int i = 16; i <=17; i++){
+            for(int j = 0; j <= 50; j+=10){
+                String result = i + ":" +j;
+                teachersAppointments.add(result);
+            }
+        }
+        return teachersAppointments;
+    }
+    public List<String> requestedTeacherAppointments(String lName, String fName){
+        List<String> bookedApp = bookedAppointments();
+        List<String> result = new ArrayList<>();
+        for(TeacherDetails d : details){
+            if(d.lastName.equals(lName) && d.firstName.equals(fName)){
+                String time = d.receptionHr + ":" + d.receptionMin;
+                bookedApp.remove(time);
+            }
+        }
+        return bookedApp;
+    }
+
+    public String theTimeWhenTheTeacherLeft(String lName,String fName){
+        String lastTime = "";
+        int maxHr = Integer.MIN_VALUE;
+        int maxMin = Integer.MIN_VALUE;
+        for(TeacherDetails d : details){
+            if(d.lastName.equals(lName) && d.firstName.equals(fName)){
+                if(maxHr < d.receptionHr && maxMin < d.receptionMin || maxHr <= d.receptionHr ){
+                    if(maxHr < d.receptionHr && maxHr > 0){
+                        maxMin = 0;
+                        break;
+                    }else{
+                        maxHr = d.receptionHr;
+                        maxMin = d.receptionMin;
+                    }
+
+                }
+
+
+                lastTime = maxHr + ":" + (maxMin + 10);
+            }
+        }
+        return lastTime;
+    }
 
 
 

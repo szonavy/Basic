@@ -46,6 +46,13 @@ public class ReceptionMain {
         BookingDetails bookedDate = teacher.parents;
         System.out.println("The appointment was booked on: " + bookedDate.year + "." + bookedDate.month + "." + bookedDate.day + "-" + bookedDate.hr + ":" + bookedDate.min );
 
+        System.out.println("\nTask 6:");
+        String lName = "Barna";
+        String fName = "Eszter";
+        System.out.println(lName + " " + fName + " has the follow free appointments :");
+        System.out.println(manager.requestedTeacherAppointments(lName,fName));
+        System.out.println("The time when " + lName + " " + fName + " can leave the school at : " + manager.theTimeWhenTheTeacherLeft(lName,fName));
+
 
 
 
