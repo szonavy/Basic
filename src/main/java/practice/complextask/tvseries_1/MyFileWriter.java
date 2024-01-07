@@ -1,4 +1,4 @@
-package practice.complextask.tvseries;
+package practice.complextask.tvseries_1;
 
 import java.io.BufferedWriter;
 import java.io.File;

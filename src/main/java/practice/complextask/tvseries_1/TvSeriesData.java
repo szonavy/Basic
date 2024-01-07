@@ -1,4 +1,4 @@
-package practice.complextask.tvseries;
+package practice.complextask.tvseries_1;
 
 public class TvSeriesData {
     String date;

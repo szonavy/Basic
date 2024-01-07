@@ -1,4 +1,4 @@
-package practice.complextask.subjects;
+package practice.complextask.subject_2;
 
 import practice.a_common.MyFileReader;
 

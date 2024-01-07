@@ -1,4 +1,4 @@
-package practice.complextask.fence;
+package practice.complextask.fence_3;
 
 import practice.a_common.MyFileReader;
 

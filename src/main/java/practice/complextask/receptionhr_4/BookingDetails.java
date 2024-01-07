@@ -1,6 +1,4 @@
-package practice.complextask.receptionhr;
-
-import java.util.Comparator;
+package practice.complextask.receptionhr_4;
 
 public class BookingDetails {
     int year;

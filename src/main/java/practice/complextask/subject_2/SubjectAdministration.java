@@ -1,4 +1,4 @@
-package practice.complextask.subjects;
+package practice.complextask.subject_2;
 
 public class SubjectAdministration {
     //Albatrosz Aladin
