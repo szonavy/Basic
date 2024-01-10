@@ -27,7 +27,7 @@ public class TrainManager {
     public int numberOfStations(){
 
        return details.stream()
-                .map(m->m.stationId)
+               .map(m->m.stationId)
                .collect(Collectors.toSet())
                .size();
     }
@@ -42,18 +42,71 @@ public class TrainManager {
         return (hr *60) + min;
     }
 
-    public void TheMostWaitTimeTrain(){
+    public Map<TrainDetails, Integer> theMostWaitTimeTrain(){
+        Map<TrainDetails, Integer> result = new HashMap<>();
+        Collections.sort(details,new ComparatorByTrain());
+        System.out.println(details);
         int maximum = Integer.MIN_VALUE;
         TrainDetails train = null;
         for(int i = 0; i < details.size()-1; i++){
             int oneTrainTime = convertToMin(details.get(i).hr,details.get(i).min);
             int anotherTrainTime = convertToMin(details.get(i+1).hr,details.get(i+1).min);
 
-            if(maximum < (anotherTrainTime - oneTrainTime)){
-                
+            if(details.get(i).stationId == details.get(i+1).stationId && details.get(i).departureOrArrive.equals("E") && details.get(i+1).departureOrArrive.equals("I")){
+                if(maximum < (anotherTrainTime - oneTrainTime)){
+                    maximum = (anotherTrainTime - oneTrainTime);
+                    train = details.get(i);
+                }
             }
         }
+        result.put(train,maximum);
+        return result;
     }
+
+    public int lastTimeOfTheRequestedTrain(int tr){
+        int last = 0;
+        for (TrainDetails d : details) {
+            if(d.trainId == tr){
+                last = convertToMin(d.hr,d.min);
+            }
+        }
+        return last;
+    }
+    public int findTheStartOfTrain(int tr){
+        return details.stream()
+                .filter(m->m.trainId == tr)
+                .mapToInt(l->convertToMin(l.hr,l.min))
+                .findFirst()
+                .orElse(0);
+    }
+
+    public String tellTheScheduleStatus(int tr, int hr, int min){
+        String message = "";
+        int prescribedSchedule = convertToMin(hr,min);
+        int realSchedule = (lastTimeOfTheRequestedTrain(tr) - findTheStartOfTrain(tr));
+
+        if(prescribedSchedule < realSchedule){
+            message = "he journey of train number " +  tr + " was " +  (realSchedule - prescribedSchedule)  +" minutes longer than prescribed.";
+        }else if (prescribedSchedule > realSchedule){
+            message = "he journey of train number " +  tr + " was " +  (prescribedSchedule - realSchedule)  +" minutes shorter than prescribed.";
+        }else{
+            message = "The journey of train number " +  tr + " took exactly the prescribed time";
+        }
+        return message;
+    }
+    public List<String> scheduleOfTheArrivalTimeByTrain(int tr){
+        List<String> schedule = new ArrayList<>();
+        for(TrainDetails d : details){
+            if(d.trainId == tr) {
+                if (d.departureOrArrive.equals("E")) {
+                    schedule.add(d.stationId + ".station: " + d.hr + ":" + d.min + " \n");
+                }
+            }
+        }
+        return schedule;
+    }
+
+
 
 
 
