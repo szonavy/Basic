@@ -105,6 +105,23 @@ public class TrainManager {
         }
         return schedule;
     }
+    public void whereIsTheTrain(int hr, int min){
+        int requestedTime = convertToMin(hr,min);
+        Collections.sort(details,new ComparatorByTrain());
+        String message = "";
+
+        for( int i = 0; i < details.size()-1; i++){
+            int timeI = convertToMin(details.get(i).hr,details.get(i).min);
+            int timeIPlusOne = convertToMin(details.get(i+1).hr,details.get(i+1).min);
+            if(timeI <= requestedTime && timeIPlusOne > requestedTime){
+                if(details.get(i).departureOrArrive.equals("I") && details.get(i+1).departureOrArrive.equals("E") ){
+                    System.out.println("The " + details.get(i).trainId + " is between to the " + details.get(i).stationId + " and "+ details.get(i+1).stationId + " station ");
+                }else{
+                    System.out.println("The " + details.get(i).trainId + " is standing on the " + details.get(i).stationId + " station");
+                }
+            }
+        }
+    }
 
 
 

@@ -42,6 +42,9 @@ public class TrainMain {
         System.out.println("\nTask 6:");
         System.out.println(manager.scheduleOfTheArrivalTimeByTrain(trainNr));
 
+        System.out.println("\nTask 7:");
+        manager.whereIsTheTrain(hr,min);
+
 
 
 
