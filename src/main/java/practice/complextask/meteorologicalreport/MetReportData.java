@@ -2,11 +2,11 @@ package practice.complextask.meteorologicalreport;
 
 public class MetReportData {
     String location;
-    String time;
-    String windDetail;
+    MetReportTime time;
+    WindDirection windDetail;
     int temperature;
 
-    public MetReportData(String location, String time, String windDetail, int temperature) {
+    public MetReportData(String location, MetReportTime time, WindDirection windDetail, int temperature) {
         this.location = location;
         this.time = time;
         this.windDetail = windDetail;
