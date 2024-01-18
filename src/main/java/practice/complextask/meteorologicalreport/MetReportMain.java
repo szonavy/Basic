@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 public class MetReportMain {
     public static void main(String[] args) {
+        //staticus valtozoba main fele
         String fileIn = "src/main/java/resources/complextasks/meteorologicalreport/tavirathu13.txt";
         MyFileReader reader = new MyFileReader(fileIn);
+        //rows/lines
         List<String> row = reader.readLines();
 
         MetReportManager manager = new MetReportManager(row);
@@ -22,17 +24,21 @@ public class MetReportMain {
         System.out.println("Please give me a location");
         Scanner sc = new Scanner(System.in);
         String location = sc.next();
-        MetReportTime time = manager.lastDataFromTheRequestedLocation(location);
+        MetReportTime time = manager.getLastDataForLocation(location);
+        //atirni tostringet
         System.out.println("The last report arrived at " + time.hr + ":" + time.sec + " from the " + location + " location");
 
         System.out.println("\nTask 3:");
         MetReportData smallest = manager.getSmallestTemperature();
+        //atirni tostringet
         System.out.println("The smallest temperature details are: " + smallest.location + " " + smallest.time + " " + smallest.temperature + " degree.");
         MetReportData highest = manager.getHighestTemperature();
         System.out.println("The highest temperature details are: " + highest.location + " " + highest.time + " " + highest.temperature + " degree.");
 
         System.out.println("\nTask 4:");
-        List<MetReportData> calmWind = manager.calmWind();
+        String dir = "000";
+        int str = 0;
+        List<MetReportData> calmWind = manager.calmWind(dir,str);
 
         if(calmWind.isEmpty()){
             System.out.println("There was no calm wind during the measurements.'");
@@ -47,11 +53,12 @@ public class MetReportMain {
         Map<String,String> average = manager.getAverageTemperature();
         Map<String, Integer> fluctuation = manager.temperatureFluctuation();
 
+        //entryset hasznalata
         for(String a : average.keySet()){
             if(average.get(a).equals("NA")){
                 System.out.println(a + " " + average.get(a) + "; temperature fluctuation: " + fluctuation.get(a));
             }else{
-                System.out.println(a + " temperature average: " + Integer.parseInt(average.get(a)) / 4 + "; temperature fluctuation: " + fluctuation.get(a));
+                System.out.println(a + " temperature average: " + Integer.parseInt(average.get(a)) + "; temperature fluctuation: " + fluctuation.get(a));
             }
         }
 
@@ -59,13 +66,16 @@ public class MetReportMain {
 
         Map<String, Map<MetReportTime, String>> strength = manager.showTheWindStrength();
         for(String r : strength.keySet()){
+            //filenev konstans valtozoba kiemelni
             MyFileWriter writer = new MyFileWriter("src/main/java/resources/complextasks/meteorologicalreport/" + r + ".txt");
 
             writer.writeIntoFile(r + "\n");
 
            for(MetReportTime t : strength.get(r).keySet()){
+               //stringbuilderbe vmi 1x kell igy osszeallitani a filet es nem kell mindig megnyitogatni a filet
                writer.writeIntoFile(t + " " + strength.get(r).get(t) + "\n");
            }
         }
+        System.out.println("test  " );
     }
 }
