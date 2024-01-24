@@ -1,4 +1,4 @@
-package practice.complextask.meteorologicalreport;
+package practice.complextask.meteorologicalreport_6;
 
 import practice.a_common.MyFileReader;
 import practice.a_common.MyFileWriter;

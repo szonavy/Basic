@@ -1,4 +1,4 @@
-package practice.complextask.meteorologicalreport;
+package practice.complextask.meteorologicalreport_6;
 
 public class MetReportTime {
     int hr;
