@@ -15,7 +15,7 @@ public class ETravelMain {
         System.out.println("There are " + manager.data.size() + " passenger wanted to use this service.");
 
         System.out.println("\nTask 3:");
-        System.out.println("There were " + manager.numberOgRejectedPassengers() + " people, whose can't use the bus.");
+        System.out.println("There were " + manager.numberOfRejectedPassengers() + " people, whose can't use the bus.");
     }
 
 

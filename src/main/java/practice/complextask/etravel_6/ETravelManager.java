@@ -1,7 +1,5 @@
 package practice.complextask.etravel_6;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class ETravelManager {
             data.add(new ETravelData(busStopId,new ETravelTime(cuttingRow[1]), cardId,cuttingRow[3],cuttingRow[4]));
         }
     }
-    public int numberOgRejectedPassengers(){
+    public int numberOfRejectedPassengers(){
         int count = 0;
         for(ETravelData d : data){
 
