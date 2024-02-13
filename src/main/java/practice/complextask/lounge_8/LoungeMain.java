@@ -36,8 +36,23 @@ public class LoungeMain {
         System.out.println("Workers,who stayed at the lounge according to id: " + manager.getIdWhoStayedAtTheLounge().keySet());
 
         System.out.println("\nTask 5:");
+        System.out.println("There were at " + manager.getTheMostPeopleTime().get().getKey() + " at the same time");
+
         System.out.println("\nTask 6:");
+        System.out.println("Please give me an id:");
         int personalId = 22;
+
+        System.out.println("\nTask 7:");
+        List<LoungeData> reqData = manager.getDetailsAboutTheRequestedPerson(personalId);
+        System.out.println(manager.getTheTimeWhenWasTheRequestedPersonInTheLounge(reqData));
+
+        System.out.println("\nTask 8:");
+        System.out.println("The " + personalId + ". person has spent " + manager.countTheStayedTime(reqData) + " minutes in the lounge.");
+        System.out.println(manager.getThePersonStatus(reqData));
+
+
+
+
 
 
 

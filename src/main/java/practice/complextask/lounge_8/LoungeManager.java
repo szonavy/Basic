@@ -1,6 +1,5 @@
 package practice.complextask.lounge_8;
 
-import java.text.Collator;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -10,6 +9,7 @@ public class LoungeManager {
     public LoungeManager(List<String> rows) {
         fileHandling(rows);
     }
+
     private void fileHandling(List<String> rows){
 
         for (String r : rows) {
@@ -57,4 +57,85 @@ public class LoungeManager {
         return stayed;
     }
 
+    public Map<String,List<LoungeData>> collectPersonsByTime(){
+        Map<String,List<LoungeData>> time = new HashMap<>();
+
+        Collections.sort(data,new CompeareByTime());
+        for (LoungeData d : data) {
+            if(d.stayedOrNot) {
+                time.computeIfAbsent(d.hr + ":" + d.min, k -> new ArrayList<>()).add(d);
+            }
+        }
+        return time;
+    }
+
+    public int getTheMostPeopleInTheRoomByTime(){
+        Map<String,List<LoungeData>> time = collectPersonsByTime();
+        return time.entrySet().stream()
+                .mapToInt(l->l.getValue().size())
+                .max().orElse(0);
+    }
+
+    public Optional<Map.Entry<String, List<LoungeData>>> getTheMostPeopleTime(){
+        int max = getTheMostPeopleInTheRoomByTime();
+        Map<String,List<LoungeData>> time =  collectPersonsByTime();
+        return time.entrySet()
+                .stream()
+                .filter(l->l.getValue().size() == max)
+                .findFirst();
+    }
+
+    public List<LoungeData> getDetailsAboutTheRequestedPerson(int id){
+        return data.stream()
+                .filter(l->l.id == id)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getTheTimeWhenWasTheRequestedPersonInTheLounge(List<LoungeData> reqData){
+        List<String> timeList = new ArrayList<>();
+        String message = "";
+        if(reqData.size() % 2 == 0){
+            for(int i = 0; i < reqData.size(); i += 2){
+                message = reqData .get(i).hr + ":" + reqData .get(i).min + "-" + reqData .get(i+1).hr + ":" + reqData .get(i+1).min;
+                timeList.add(message);
+            }
+        }else{
+            for(int i = 0; i < reqData.size()-1; i += 2){
+                message = reqData .get(i).hr + ":" + reqData .get(i).min + "-" + reqData .get(i+1).hr + ":" + reqData .get(i+1).min;
+                timeList.add(message);
+            }
+            message = reqData.get(reqData.size()-1).hr + ":" + reqData.get(reqData.size()-1).min + "-";
+            timeList.add(message);
+        }
+        return timeList;
+    }
+
+    private int getTheTimeInMin(int hr, int min){
+        return hr * 60 + min;
+    }
+
+    public int countTheStayedTime(List<LoungeData> reqData){
+        int count = 0;
+        if(reqData.size() % 2 == 0){
+            for(int i = 0; i < reqData.size(); i += 2){
+                count += (getTheTimeInMin(reqData.get(i + 1).hr,reqData.get(i + 1).min) - getTheTimeInMin(reqData.get(i).hr,reqData.get(i).min) );
+            }
+        }else{
+            for(int i = 0; i < reqData.size()-1; i += 2){
+                count += (getTheTimeInMin(reqData.get(i + 1).hr,reqData.get(i + 1).min) - getTheTimeInMin(reqData.get(i).hr,reqData.get(i).min) );
+            }
+            count += getTheTimeInMin(15,0) - getTheTimeInMin(reqData.get(reqData.size()-1).hr,reqData.get(reqData.size()-1).min);
+        }
+        return count;
+    }
+
+    public String getThePersonStatus(List<LoungeData> reqData){
+        boolean status = reqData.get(reqData.size()-1).stayedOrNot;
+
+        if(status){
+            return "The person stayed in the lounge at the end of the observation.";
+        }else{
+            return "The person not stayed in the lounge at the end of the observation.";
+        }
+    }
 }
