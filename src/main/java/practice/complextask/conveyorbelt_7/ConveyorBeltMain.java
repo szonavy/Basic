@@ -5,12 +5,12 @@ import practice.a_common.MyFileReader;
 import java.util.List;
 
 public class ConveyorBeltMain {
-    //TODO: NAGYBETU
-    static final String fileIn = "src/main/java/resources/conveyorbelt/szallit.txt";
+
+    static final String FILE_IN = "src/main/java/resources/conveyorbelt/szallit.txt";
 
     public static void main(String[] args) {
 
-        MyFileReader reader = new MyFileReader(fileIn);
+        MyFileReader reader = new MyFileReader(FILE_IN);
         List<String> rows = reader.readLines();
         ConveyorBeltManager manager = new ConveyorBeltManager(rows);
         System.out.println("\nTask 1:");
