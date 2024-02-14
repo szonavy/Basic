@@ -26,37 +26,38 @@ public class ConveyorBeltManager {
         }
     }
 
-    public int requestedDeliveryStartPlace(int requested){
+    public int getRequestedDeliveryStartPlace(int requestediD){
         return data.stream()
-                .filter(l->l.deliveryId == requested)
+                .filter(l->l.deliveryId == requestediD)
                 .mapToInt(m->m.packageStartLocation)
                 .findFirst().orElse(-1);
     }
-    public int requestedDeliveryEndPlace(int requested){
+    public int getRequestedDeliveryEndPlace(int requested){
         return data.stream()
                 .filter(l->l.deliveryId == requested)
                 .mapToInt(m->m.packageEndLocation)
                 .findFirst().orElse(-1);
     }
-    public int distance(int lBelt, int start, int end){
+
+    public int getDistance(int beltPosition, int startPosition, int endPosition){
         int dist = 0;
-        if(start <= end){
-            dist = end - start;
+        if(startPosition <= endPosition){
+            dist = endPosition - startPosition;
         }else{
-            dist = (lBelt - end) + start;
+            dist = (beltPosition - endPosition) + startPosition;
         }
         return dist;
     }
 
     public int getTheLongestDistance(){
        return data.stream()
-                .mapToInt(l->distance(lengthOfTheBelt,l.packageStartLocation,l.packageEndLocation))
+                .mapToInt(l-> getDistance(lengthOfTheBelt,l.packageStartLocation,l.packageEndLocation))
                .max()
                .orElse(-1);
 
     }
 
-    public int sumWeightFromPlaceZero(int zero){
+    public int sumWeightFromLocation(int zero){
         return data.stream()
                 .filter(l->l.packageStartLocation < lengthOfTheBelt && l.packageEndLocation > zero)
                 .mapToInt(k->k.packageWeight)
@@ -64,7 +65,7 @@ public class ConveyorBeltManager {
     }
 
     public List<Integer> getPackageIdByRequestedTime(int time){
-        return  data.stream()
+        return data.stream()
                 .filter(l->l.sumTime > time && l.startTime >= time)
                 .map(k->k.deliveryId)
                 .collect(Collectors.toList());
