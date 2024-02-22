@@ -4,7 +4,7 @@ public class AbsencesStudentsDetails {
     String firstName;
     String lastName;
     String absences;
-    int absencesId;
+    int studentId;
 
     static int id = 0;
     public AbsencesStudentsDetails(String firstName, String lastName, String absences) {
@@ -12,7 +12,7 @@ public class AbsencesStudentsDetails {
         this.lastName = lastName;
         this.absences = absences;
         id++;
-        absencesId = id;
+        studentId = id;
 
     }
 
@@ -22,7 +22,7 @@ public class AbsencesStudentsDetails {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", absences='" + absences + '\'' +
-                ", absencesId=" + absencesId +
+                ", absencesId=" + studentId +
                 '}';
     }
 }

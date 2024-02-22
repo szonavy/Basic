@@ -26,6 +26,19 @@ public class AttendanceDetails {
         countTheAbsences(studentsAbsence);
 
     }
+    public String getValuesById(int requestedId){
+
+        switch(requestedId){
+            case 1 : return this.first;
+            case 2 : return this.second;
+            case 3 : return this.third;
+            case 4 : return this.fourth;
+            case 5 : return this.fifth;
+            case 6 : return this.sixth;
+            case 7 : return this.seventh;
+        }
+        return null;
+    }
     private void countTheAbsences(String studentClass){
 
         for(int i = 0; i < studentClass.length(); i++){
