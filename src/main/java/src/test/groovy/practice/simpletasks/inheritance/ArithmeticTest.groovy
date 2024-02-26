@@ -3,7 +3,7 @@ package practice.simpletasks.inheritance
 import spock.lang.Specification
 
 class ArithmeticTest extends Specification{
-    
+
 
     def 'Arithmetic add'(){
         setup:

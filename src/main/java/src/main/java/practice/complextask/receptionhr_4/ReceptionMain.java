@@ -17,7 +17,7 @@ public class ReceptionMain {
         System.out.println(manager.details);
 
         System.out.println("\nTask 2:");
-        System.out.println("the number of the booking records are: " + manager.numberOfbookingRecords());
+        System.out.println("the number of the booking records are: " + manager.numberOfBookingRecords());
 
         System.out.println("\nTask 3:");
         System.out.println("Please give me teacher's name like: Nagy Ferenc");

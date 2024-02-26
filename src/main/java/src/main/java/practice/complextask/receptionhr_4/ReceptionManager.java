@@ -50,7 +50,7 @@ public class ReceptionManager {
 
     }
 
-    public int numberOfbookingRecords(){
+    public int numberOfBookingRecords(){
         return details.size();
     }
 
