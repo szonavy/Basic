@@ -49,7 +49,7 @@ public class CampManager {
                 .map(k->k.startDate)
                 .collect(Collectors.toList());
     }
-    private int getTheNumberOfMostInterestedProgram(){
+    public int getTheNumberOfMostInterestedProgram(){
         return details.stream()
                 .map(l->l.students.length())
                 .reduce(0,Integer::max);
