@@ -47,15 +47,13 @@ public class CampMain {
 
         System.out.println("\nTask 7:");
 
-        Character student = 'L';
+        Character student = 'A';
         MyFileWriter writer = new MyFileWriter(FILE_OUT);
         List<CampDetails> studentInterest = manager.studentInterests(student);
         for(CampDetails d : studentInterest){
             writer.writeIntoFile(d.startDate.month + "." + d.startDate.day + "-"+d.endDate.month + "." + d.endDate.day + "." + d.activity + "\n");
         }
-
-        System.out.println("-----------");
-        //manager.studentInterests();
+        System.out.println(manager.participation(student));
 
     }
 }

@@ -83,22 +83,29 @@ public class CampManager {
             for(int i = 0 ; i < d.students.length(); i++){
                 if (d.students.charAt(i) == student) {
                     interests.add(d);
-                    System.out.println(d);
                 }
             }
         }
         return interests;
     }
-//    public String participation(){
-//        List<CampDetails> interests = studentInterests();
-//
-//        for(int i = 0; i < interests.size()-1; i++){
-//            for(int j = 1; j < interests.size(); j++){
-//                if(interests.get(i).startDate.month)
-//
-//            }
-//        }
-//    }
+    public String participation(Character student){
+        String message = "";
+        List<CampDetails> interests = studentInterests(student);
+        Collections.sort(interests, new CompareByDate());
+
+        for(int i = 0; i < interests.size()-1; i++){
+            for(int j = i+1; j < interests.size(); j++){
+                if(interests.get(i+1).startDate.month < interests.get(i).endDate.month || (interests.get(i+1).startDate.month == interests.get(i).endDate.month && interests.get(i+1).startDate.day < interests.get(i).endDate.day)){
+                     message = "The student can't go every camp.";
+                    break;
+                }
+            }
+        }
+        if(message.equals("")){
+            message = "The student can go every camp.";
+        }
+        return message;
+    }
 
 
 
