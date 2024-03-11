@@ -1,4 +1,4 @@
-package practice.complextask.signal;
+package practice.complextask.signal_11;
 
 import practice.a_common.MyFileReader;
 import practice.a_common.MyFileWriter;

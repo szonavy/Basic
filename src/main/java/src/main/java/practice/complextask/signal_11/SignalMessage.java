@@ -1,4 +1,4 @@
-package practice.complextask.signal;
+package practice.complextask.signal_11;
 
 public class SignalMessage {
     int hr;
