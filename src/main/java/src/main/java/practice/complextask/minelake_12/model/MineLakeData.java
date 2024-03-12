@@ -1,10 +1,10 @@
 package practice.complextask.minelake_12.model;
 
 public class MineLakeData {
-    int row;
-    int column;
-    int value;
-    boolean isLake;
+    public int row;
+    public int column;
+    public int value;
+    public boolean isLake;
 
     public MineLakeData(int row, int column, int value, boolean isLake) {
         this.row = row;
