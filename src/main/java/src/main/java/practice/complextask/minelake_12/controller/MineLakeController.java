@@ -22,8 +22,8 @@ public class MineLakeController {
         int value;
         boolean isLake;
 
-        for(int i = 2; i < row.size(); i++){
-            lakeRow = i - 1;
+        for(int i = 0; i < row.size(); i++){
+            lakeRow = i + 1;
             String[] cutTheRow = row.get(i).split(" ");
 
             for(int j = 0; j < cutTheRow.length; j++){
