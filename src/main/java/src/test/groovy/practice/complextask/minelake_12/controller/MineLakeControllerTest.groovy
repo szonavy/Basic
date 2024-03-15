@@ -3,9 +3,28 @@ package practice.complextask.minelake_12.controller
 import practice.complextask.minelake_12.model.DeepestPartCoordinates
 import practice.complextask.minelake_12.model.LakeDiagram
 import practice.complextask.minelake_12.model.MineLakeData
+import spock.lang.Shared
 import spock.lang.Specification
 
 class MineLakeControllerTest extends Specification {
+
+    @Shared def testFile1 = ["42",
+                             "12",
+                             "0 0 0 0 0 0 0 0 ",
+                             "0 75 64 53 61 25 0",
+                             "0 2 0 18 75 58 64 0",
+                             "0 0 0 34 74 73 67 0",
+                             "0 75 3 15 2 10 0 0",
+                             "0 0 0 0 0 0 0 0"]
+
+    @Shared def testFile2 = ["42",
+                             "12",
+                             "0 0 0 0 0 0 0 0 ",
+                             "0 75 4 53 61 25 0",
+                             "0 2 0 18 75 58 64 0",
+                             "0 0 0 34 74 73 67 0",
+                             "0 75 3 15 2 10 0 0",
+                             "0 0 0 0 0 0 0 0"]
 
     def 'getTheRequestedValue'() {
         setup:
@@ -15,13 +34,8 @@ class MineLakeControllerTest extends Specification {
         then:
         assert result == expected
         where:
-        list                | row | column | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 3   | 4      | 18
+        list         | row | column | expected
+        testFile1    | 3   | 4      | 18
     }
 
     def 'getTheArea'() {
@@ -33,12 +47,7 @@ class MineLakeControllerTest extends Specification {
         assert result == expected
         where:
         list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 19
+        testFile1 | 19
     }
 
     def 'getTheDepth'() {
@@ -50,12 +59,7 @@ class MineLakeControllerTest extends Specification {
         assert result == expected
         where:
         list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 848.0
+        testFile1 | 848.0
     }
 
     def 'getTheDeepestPoint'() {
@@ -67,12 +71,7 @@ class MineLakeControllerTest extends Specification {
         assert result == expected
         where:
         list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 75
+        testFile1 | 75
     }
     //because of hash , I've generated hashCode
     def 'getTheDeepestPartsCoordinates'() {
@@ -83,13 +82,8 @@ class MineLakeControllerTest extends Specification {
         then:
         assert result == expected
         where:
-        list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | [new DeepestPartCoordinates(2, 2), new DeepestPartCoordinates(3, 5), new DeepestPartCoordinates(5, 2)]
+        list      | expected
+        testFile1 | [new DeepestPartCoordinates(2, 2), new DeepestPartCoordinates(3, 5), new DeepestPartCoordinates(5, 2)]
     }
 
     def 'getLakeLine'() {
@@ -101,12 +95,7 @@ class MineLakeControllerTest extends Specification {
             assert result == expected
         where:
             list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 2
+            testFile1 | 2
     }
     def 'countTheSizeOfLake'() {
         setup:
@@ -117,12 +106,7 @@ class MineLakeControllerTest extends Specification {
         assert result == expected
         where:
         list                | expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 64 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 26
+        testFile1 | 26
     }
     
     def 'makeTheDiagram'() {
@@ -133,12 +117,7 @@ class MineLakeControllerTest extends Specification {
         then:
         assert result == expected
         where:
-        list                | column |expected
-        ["0 0 0 0 0 0 0 0 ",
-         "0 75 4 53 61 25 0",
-         "0 2 0 18 75 58 64 0",
-         "0 0 0 34 74 73 67 0",
-         "0 75 3 15 2 10 0 0",
-         "0 0 0 0 0 0 0 0"] | 3 | [new LakeDiagram("01",""),new LakeDiagram("02","****"),new LakeDiagram("03",""),new LakeDiagram("04",""),new LakeDiagram("05","***"),new LakeDiagram("06","")]
+        list      | column  |expected
+        testFile2 | 3       | [new LakeDiagram("01",""),new LakeDiagram("02","****"),new LakeDiagram("03",""),new LakeDiagram("04",""),new LakeDiagram("05","***"),new LakeDiagram("06","")]
     }
 }
