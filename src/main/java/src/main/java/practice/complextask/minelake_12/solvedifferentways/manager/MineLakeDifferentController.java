@@ -51,7 +51,7 @@ public class MineLakeDifferentController {
         return depth;
     }
     public int getTheDeepestPartOfTheLake(){
-        int maximum = -Integer.MIN_VALUE;
+        int maximum = Integer.MIN_VALUE;
         for(int i = 0; i < data.length; i++){
             for(int j = 0; j < data[i].length; j++){
                 if(maximum < data[i][j]){

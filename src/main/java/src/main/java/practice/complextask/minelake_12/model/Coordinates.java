@@ -1,10 +1,10 @@
 package practice.complextask.minelake_12.model;
 
-public class DeepestPartCoordinates {
+public class Coordinates {
     public int row;
     public int column;
 
-    public DeepestPartCoordinates(int row, int column) {
+    public Coordinates(int row, int column) {
         this.row = row;
         this.column = column;
     }
@@ -14,7 +14,7 @@ public class DeepestPartCoordinates {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DeepestPartCoordinates that = (DeepestPartCoordinates) o;
+        Coordinates that = (Coordinates) o;
 
         if (row != that.row) return false;
         return column == that.column;

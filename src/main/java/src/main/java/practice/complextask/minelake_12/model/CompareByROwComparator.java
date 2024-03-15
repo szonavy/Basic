@@ -2,7 +2,7 @@ package practice.complextask.minelake_12.model;
 
 import java.util.Comparator;
 
-public class CompareByRow implements Comparator<MineLakeData> {
+public class CompareByROwComparator implements Comparator<MineLakeData> {
     @Override
     public int compare(MineLakeData o1, MineLakeData o2) {
         if(o1.row == o2.row){

@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MineLakeMain {
-    static final String FILE_IN = "src/main/java/src/main/resources/resources/complextasks/minelake/melyseg-banya.txt";
-    static final String FILE_OUT = "src/main/java/src/main/resources/resources/complextasks/minelake/diagram.txt";
+
+    private static final String FILE_IN = "src/main/java/src/main/resources/resources/complextasks/minelake/melyseg-banya.txt";
+    private static final String FILE_OUT = "src/main/java/src/main/resources/resources/complextasks/minelake/diagram.txt";
 
     public static void main(String[] args) {
         MyFileReader reader = new MyFileReader(FILE_IN);
@@ -45,9 +46,9 @@ public class MineLakeMain {
         System.out.println("Please give me the column id: ");
         Scanner sc = new Scanner(System.in);
         int row = sc.nextInt();
-        List<LakeDiagram> diagram = controller.makeTheDiagram(row);
-        for(LakeDiagram d : diagram){
-            writer.writeIntoFile(d.row + d.depth + "\n");
+        List<StringBuilder> diagram = controller.makeTheDiagram(row);
+        for(StringBuilder d : diagram){
+            writer.writeIntoFile(d +"\n");
         }
 
         System.out.println(controller.makeTheDiagram(row));

@@ -1,6 +1,6 @@
 package practice.complextask.minelake_12.controller
 
-import practice.complextask.minelake_12.model.DeepestPartCoordinates
+import practice.complextask.minelake_12.model.Coordinates
 import practice.complextask.minelake_12.model.LakeDiagram
 import practice.complextask.minelake_12.model.MineLakeData
 import spock.lang.Shared
@@ -83,7 +83,7 @@ class MineLakeControllerTest extends Specification {
         assert result == expected
         where:
         list      | expected
-        testFile1 | [new DeepestPartCoordinates(2, 2), new DeepestPartCoordinates(3, 5), new DeepestPartCoordinates(5, 2)]
+        testFile1 | [new Coordinates(2, 2), new Coordinates(3, 5), new Coordinates(5, 2)]
     }
 
     def 'getLakeLine'() {

@@ -1,40 +1,31 @@
 package practice.complextask.minelake_12.controller;
 
-import practice.complextask.minelake_12.model.CompareByRow;
-import practice.complextask.minelake_12.model.DeepestPartCoordinates;
-import practice.complextask.minelake_12.model.LakeDiagram;
+import practice.complextask.minelake_12.model.CompareByROwComparator;
+import practice.complextask.minelake_12.model.Coordinates;
 import practice.complextask.minelake_12.model.MineLakeData;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MineLakeController {
     public List<MineLakeData> data = new ArrayList<>();
 
-    public MineLakeController(List<String> row) {
-       fileHandling(row);
+    public MineLakeController(List<String> rows) {
+       fileHandling(rows);
     }
 
-    private void fileHandling(List<String> row){
-        int lakeRow;
-        int lakeColumn;
-        int value;
-        boolean isLake;
+    private void fileHandling(List<String> rows){
 
-        for(int i = 0; i < row.size(); i++){
-            lakeRow = i + 1;
-            String[] cutTheRow = row.get(i).split(" ");
+
+        for(int i = 2; i < rows.size(); i++){
+            String[] cutTheRow = rows.get(i).split(" ");
 
             for(int j = 0; j < cutTheRow.length; j++){
-                lakeColumn = j + 1;
-                value = Integer.parseInt(cutTheRow[j]);
-                if(value == 0){
-                    isLake = false;
-                }else{
-                    isLake = true;
-                }
-                data.add(new MineLakeData(lakeRow,lakeColumn,value,isLake));
+                int value = Integer.parseInt(cutTheRow[j]);
+
+                data.add(new MineLakeData(i-1,j + 1, value, value != 0));
             }
         }
     }
@@ -46,34 +37,37 @@ public class MineLakeController {
                 .findFirst()
                 .orElse(-1);
     }
-    public long getTheArea(){
-       return data.stream()
-                .filter(l->l.isLake)
-                .count();
-    }
-    public double getTheDepth(){
+    public List<MineLakeData> collectTheLake(){
         return data.stream()
                 .filter(l->l.isLake)
+                .collect(Collectors.toList());
+    }
+
+    public long getTheArea(){
+       return collectTheLake().size();
+    }
+    public double getTheDepth(){
+        return collectTheLake().stream()
                 .mapToInt(k->k.value)
                 .sum();
     }
+
     public int getTheDeepestPoint(){
         return data.stream()
                 .mapToInt(l->l.value)
                 .reduce(0,Integer::max);
     }
-    public List<DeepestPartCoordinates> getTheDeepestPartsCoordinates(){
-        List<DeepestPartCoordinates> deepestParts = new ArrayList<>();
+    public List<Coordinates> getTheDeepestPartsCoordinates(){
+        List<Coordinates> deepestParts = new ArrayList<>();
 
         int deepest = getTheDeepestPoint();
 
              data.stream()
                 .filter(l->l.value == deepest)
-                .forEach(k->deepestParts.add(new DeepestPartCoordinates(k.row,k.column)));
+                .forEach(k->deepestParts.add(new Coordinates(k.row,k.column)));
 
              return deepestParts;
     }
-
     public int getLakeLine(MineLakeData detail){
         int count = 0;
 
@@ -105,28 +99,25 @@ public class MineLakeController {
         return count;
     }
 
-    public List<LakeDiagram> makeTheDiagram(int column){
-        Collections.sort(data,new CompareByRow());
-        List<LakeDiagram> diagram = new ArrayList<>();
-        String row = "";
-
+    public List<StringBuilder> makeTheDiagram(int column){
+        Collections.sort(data,new CompareByROwComparator());
+        List<StringBuilder> diagram = new ArrayList<>();
 
         for(MineLakeData d : data){
-            String depth = "";
             if(d.column == column){
+                StringBuilder row = new StringBuilder();
                 if(d.row < 10){
-                    row = "0" + d.row + "";
+                    row.append("0").append(d.row);
                 }else{
-                    row = d.row + "";
+                    row.append(d.row);
                 }
+
                 for(int i = 0; i < d.value; i++){
-                    depth += "*";
+                    row.append("*");
                 }
-                diagram.add(new LakeDiagram(row,depth));
+                diagram.add(row);
             }
         }
         return diagram;
     }
-
-
 }
