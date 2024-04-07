@@ -1,0 +1,26 @@
+1.task
+Write on the screen how many episodes' data the file contains, whose airing dates are known!
+
+SELECT COUNT(*) FROM Epizodok
+WHERE megjelenes IS NOT NULL;
+
+2. task
+Determine what percentage of the episodes in the file have already been viewed by the person recording the list.
+
+SELECT SUM(megnezett) / COUNT(*) FROM Epizodok;
+
+4.task
+Calculate how much total time the person spent watching the episodes.
+
+SELECT SUM(s.hossz) from Sorozatok s
+INNER JOIN Epizodok e ON e.sorozat_id = s.id
+WHERE e.megnezett = 1;
+
+5 task
+
+Determine the total runtime of episodes per series and the number of episodes per series!
+When calculating, take into account episodes without airing dates as well!
+
+SELECT nev, SUM(hossz), count(*) from Sorozatok s
+INNER JOIN Epizodok e ON e.sorozat_id = s.id
+GROUP BY s.nev;
