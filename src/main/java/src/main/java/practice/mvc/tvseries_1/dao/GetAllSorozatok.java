@@ -7,14 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GetAllSorozatok {
 
     private static final String SOROZATOK_SQL = "SELECT * FROM Sorozatok;";
 
-    public List<Sorozatok> getSorozatok(){
-        List<Sorozatok> sorozatok = new ArrayList<>();
+    public Map<Integer,Sorozatok> getSorozatok(){
+        Map<Integer,Sorozatok> sorozatok = new HashMap<>();
 
         try {
             Connection con = ConnectionPool.getConnection();
@@ -26,7 +28,7 @@ public class GetAllSorozatok {
                 String nev = rs.getString("nev");
                 int hossz = rs.getInt("hossz");
 
-                sorozatok.add(new Sorozatok(id,nev,hossz));
+                sorozatok.put(id,new Sorozatok(id,nev,hossz));
             }
 
         } catch (SQLException e) {
