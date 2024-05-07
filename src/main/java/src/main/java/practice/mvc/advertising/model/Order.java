@@ -1,14 +1,14 @@
 package practice.mvc.advertising.model;
 
 public class Order {
-    int day;
-    String town;
-    int count;
+    public int day;
+    public String town;
+    public int orders;
 
     public Order(int day, String town, int count) {
         this.day = day;
         this.town = town;
-        this.count = count;
+        this.orders = count;
     }
 
     @Override
@@ -16,7 +16,7 @@ public class Order {
         return "Order{" +
                 "day=" + day +
                 ", town='" + town + '\'' +
-                ", count=" + count +
+                ", count=" + orders +
                 '}';
     }
 }

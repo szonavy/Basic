@@ -20,6 +20,14 @@ public class AdvertisingManager {
 
             advertising.add(new Order(Integer.parseInt(cutTheRow[0]),cutTheRow[1],Integer.parseInt(cutTheRow[2])));
         }
+    }
+    public int getTheNumberOfTheCustomers(){
+        return advertising.size();
+    }
 
+    public int getTheNumberOfTheOrders(){
+        return advertising.stream()
+                .mapToInt(m->m.orders)
+                .reduce(0,Integer::sum);
     }
 }
