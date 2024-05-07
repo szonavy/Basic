@@ -90,4 +90,36 @@ public class AdvertisingManager {
         }
         return orders;
     }
+    public List<Map<String,Integer>> getTheOrderSortedByDays(){
+        List<Map<String,Integer>> sum = new ArrayList<>();
+        Map<String,Integer> firstTenDays = new HashMap<>();
+        Map<String,Integer> middleTenDays = new HashMap<>();
+        Map<String,Integer> lastTenDays = new HashMap<>();
+
+        for (Order o: advertising) {
+            if(o.day <= 10){
+                if(!firstTenDays.containsKey(o.town)){
+                    firstTenDays.put(o.town,o.orders);
+                }else{
+                    firstTenDays.put(o.town,firstTenDays.get(o.town) + o.orders);
+                }
+            }else if(o.day > 10 && o.day <= 20){
+                if(!middleTenDays.containsKey(o.town)){
+                    middleTenDays.put(o.town,o.orders);
+                }else{
+                    middleTenDays.put(o.town,middleTenDays.get(o.town) + o.orders);
+                }
+            }else{
+                if(!lastTenDays.containsKey(o.town)){
+                    lastTenDays.put(o.town,o.orders);
+                }else{
+                    lastTenDays.put(o.town,lastTenDays.get(o.town) + o.orders);
+                }
+            }
+        }
+        sum.add(firstTenDays);
+        sum.add(middleTenDays);
+        sum.add(lastTenDays);
+        return sum;
+    }
 }

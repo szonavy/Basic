@@ -4,6 +4,7 @@ import practice.a_common.MyFileReader;
 import practice.mvc.advertising.controller.AdvertisingManager;
 
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     private static final String FILE_IN = "src/main/java/src/main/resources/resources/advertising/rendel.txt";
@@ -35,6 +36,9 @@ public class Main {
         int d = 21;
         System.out.println("The number of products ordered on the day : " + d);
         System.out.println(manager.summarizeTheOrdersByDay(21));
+
+        System.out.println("\nTask 8:");
+        System.out.println(manager.getTheOrderSortedByDays());
 
     }
 
