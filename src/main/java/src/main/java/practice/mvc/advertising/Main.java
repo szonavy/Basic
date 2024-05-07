@@ -23,6 +23,10 @@ public class Main {
         System.out.println("\nTask 3:");
         int day = 9;
         System.out.println("The number of the orders by " + day + ".day: " + manager.getTheOrdersByDay(day));
+
+        System.out.println("\nTask 4:");
+        System.out.println(manager.writeTheNotOrdersDays());
+
     }
 
 
