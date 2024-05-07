@@ -11,6 +11,18 @@ public class Order {
         this.orders = count;
     }
 
+    public int getDay() {
+        return day;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public int getOrders() {
+        return orders;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

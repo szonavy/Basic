@@ -2,9 +2,7 @@ package practice.mvc.advertising.controller;
 
 import practice.mvc.advertising.model.Order;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AdvertisingManager {
@@ -68,5 +66,28 @@ public class AdvertisingManager {
                 .map(l->l.day)
                 .findFirst()
                 .orElse(0);
+    }
+
+    public int summaraizeTheOrdersByDayAndTown(String town, int day){
+        return advertising.stream()
+                .filter(m->m.town.equals(town))
+                .filter(l->l.day == day)
+                .map(p->p.orders)
+                .reduce(0,Integer::sum);
+    }
+
+    public Map<String, Integer> summarizeTheOrdersByDay(int day){
+        Map<String, Integer> orders = new HashMap<>();
+
+        for(Order o : advertising){
+            if(o.day == day){
+               if(!orders.containsKey(o.town)){
+                   orders.put(o.town,o.orders);
+               }else{
+                   orders.put(o.town,orders.get(o.town) + o.orders);
+               }
+            }
+        }
+        return orders;
     }
 }

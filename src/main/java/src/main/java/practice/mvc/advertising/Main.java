@@ -31,6 +31,11 @@ public class Main {
         System.out.println("The biggest orders number was: " + manager.getTheBiggestOrdersNumber());
         System.out.println("The day of the order was : " + manager.getTheDayOfTheBiggestOrderingNumber());
 
+        System.out.println("\nTask 7:");
+        int d = 21;
+        System.out.println("The number of products ordered on the day : " + d);
+        System.out.println(manager.summarizeTheOrdersByDay(21));
+
     }
 
 
