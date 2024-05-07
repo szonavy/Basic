@@ -16,9 +16,13 @@ public class Main {
         System.out.println("Task 1:");
         System.out.println(manager.advertising);
 
-        System.out.println("Task 2:");
+        System.out.println("\nTask 2:");
         System.out.println("The number of the customers : " + manager.getTheNumberOfTheCustomers());
         System.out.println("The number of the orders are : " + manager.getTheNumberOfTheOrders());
+
+        System.out.println("\nTask 3:");
+        int day = 9;
+        System.out.println("The number of the orders by " + day + ".day: " + manager.getTheOrdersByDay(day));
     }
 
 

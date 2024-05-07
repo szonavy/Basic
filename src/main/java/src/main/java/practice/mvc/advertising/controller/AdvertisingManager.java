@@ -30,4 +30,10 @@ public class AdvertisingManager {
                 .mapToInt(m->m.orders)
                 .reduce(0,Integer::sum);
     }
+
+    public long getTheOrdersByDay(int day){
+        return advertising.stream()
+                .filter(m->m.day == day)
+                .count();
+    }
 }
