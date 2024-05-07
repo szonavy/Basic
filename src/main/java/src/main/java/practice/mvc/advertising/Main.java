@@ -27,6 +27,10 @@ public class Main {
         System.out.println("\nTask 4:");
         System.out.println(manager.writeTheNotOrdersDays());
 
+        System.out.println("\nTask 5:");
+        System.out.println("The biggest orders number was: " + manager.getTheBiggestOrdersNumber());
+        System.out.println("The day of the order was : " + manager.getTheDayOfTheBiggestOrderingNumber());
+
     }
 
 

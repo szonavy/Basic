@@ -54,4 +54,19 @@ public class AdvertisingManager {
         }
         return message;
     }
+
+    public int getTheBiggestOrdersNumber(){
+        return  advertising.stream()
+                .mapToInt(m->m.orders)
+                .reduce(0,Integer::max);
+    }
+    public int getTheDayOfTheBiggestOrderingNumber(){
+        int number = getTheBiggestOrdersNumber();
+
+        return advertising.stream()
+                .filter(m->m.orders == number)
+                .map(l->l.day)
+                .findFirst()
+                .orElse(0);
+    }
 }
