@@ -14,5 +14,10 @@ public class Main {
 
         System.out.println("Task 1");
         System.out.println(controlling.details);
+
+        System.out.println("\nTask 2:");
+        System.out.println("The number od the camps: " + controlling.getTheNumberOfTheCamps());
+        System.out.println("The theme of the first camp is : " + controlling.getTheFirstCampTheme());
+        System.out.println("The theme of the last camp is : " + controlling.getTheLastCampTheme());
     }
 }

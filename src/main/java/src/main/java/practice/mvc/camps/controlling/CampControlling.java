@@ -25,5 +25,17 @@ public class CampControlling {
             details.add(new CampDetails(startMonth,startDay,endMonth,endDay,students,campName));
         }
     }
+    public int getTheNumberOfTheCamps(){
+        return details.size();
+    }
+    public String getTheFirstCampTheme(){
+        return details.stream()
+                .map(l->l.campName)
+                .findFirst()
+                .orElse(null);
+    }
+    public String getTheLastCampTheme(){
+        return details.get(details.size()-1).campName;
+    }
 
 }
