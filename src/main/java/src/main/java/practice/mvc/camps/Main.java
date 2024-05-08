@@ -52,6 +52,7 @@ public class Main {
             System.out.println(c.startMonth + "." + c.startDay + "-" + c.endMonth + "." + c.endDay + " " + c.campName);
             writer.writeIntoFile(c.startMonth + "." + c.startDay + "-" + c.endMonth + "." + c.endDay + " " + c.campName + "\n");
         }
+        System.out.println(controlling.canTheStudentApplyForAllInterestedCamp(reqStudent));
 
 
     }

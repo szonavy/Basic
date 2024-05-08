@@ -3,7 +3,9 @@ package practice.mvc.camps.controlling;
 import practice.mvc.camps.model.CampDetails;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CampControlling {
@@ -93,6 +95,25 @@ public class CampControlling {
     }
     public String canTheStudentApplyForAllInterestedCamp(char requestedStudent){
         List<CampDetails> studentInterest = getTheCampDetailsOfTheRequestedStudent(requestedStudent);
+        Set<Integer> fillTheDays = new HashSet<>();
+        int count = 0;
+        String message = "";
+
+        for (CampDetails d : studentInterest) {
+            for(int i = (int) countTheCampsIsTheSameTime(d.startMonth,d.startDay); i <= (int)countTheCampsIsTheSameTime(d.endMonth,d.endDay); i++ ){
+                if(!fillTheDays.contains(i)){
+                    fillTheDays.add(i);
+                }else{
+                    count = -1;
+                    break;
+                }
+            }
+        }
+        if(count == -1){
+            return "You can't go to every camp.";
+        }else{
+            return "You can go to every camp.";
+        }
     }
 
 }
