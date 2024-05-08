@@ -75,4 +75,24 @@ public class CampControlling {
                 .count();
     }
 
+    public boolean searchTheStudent(String students, char requestedStudent){
+        boolean isTheStudent = false;
+        for(int i = 0; i < students.length(); i++){
+            if(students.charAt(i) == requestedStudent){
+                isTheStudent = true;
+                break;
+            }
+        }
+        return isTheStudent;
+    }
+
+    public List<CampDetails> getTheCampDetailsOfTheRequestedStudent(char requestedStudent){
+        return details.stream()
+                .filter(l-> searchTheStudent(l.students, requestedStudent))
+                .collect(Collectors.toList());
+    }
+    public String canTheStudentApplyForAllInterestedCamp(char requestedStudent){
+        List<CampDetails> studentInterest = getTheCampDetailsOfTheRequestedStudent(requestedStudent);
+    }
+
 }

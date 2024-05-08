@@ -1,13 +1,15 @@
 package practice.mvc.camps;
 
 import practice.a_common.MyFileReader;
+import practice.a_common.MyFileWriter;
 import practice.mvc.camps.controlling.CampControlling;
 import practice.mvc.camps.model.CampDetails;
 
 import java.util.List;
 
 public class Main {
-    private static String FILE_IN = "src/main/java/src/main/resources/resources/complextasks/camps/taborok.txt";
+    private static final String FILE_IN = "src/main/java/src/main/resources/resources/complextasks/camps/taborok.txt";
+    private static final String FILE_OUT = "src/main/java/src/main/resources/resources/complextasks/camps/student.txt";
     public static void main(String[] args) {
         MyFileReader reader = new MyFileReader(FILE_IN);
         List<String> rows = reader.readLines();
@@ -41,6 +43,16 @@ public class Main {
 
         System.out.println("\nTask 6:");
         System.out.println("There are " + controlling.countTheCampsIsTheSameTime(8,1) + " camps at the same time.");
+
+        System.out.println("\nTask 7:");
+        MyFileWriter writer = new MyFileWriter(FILE_OUT);
+        char reqStudent = 'L';
+        List<CampDetails> campDetails = controlling.getTheCampDetailsOfTheRequestedStudent(reqStudent);
+        for (CampDetails c : campDetails) {
+            System.out.println(c.startMonth + "." + c.startDay + "-" + c.endMonth + "." + c.endDay + " " + c.campName);
+            writer.writeIntoFile(c.startMonth + "." + c.startDay + "-" + c.endMonth + "." + c.endDay + " " + c.campName + "\n");
+        }
+
 
     }
 }
