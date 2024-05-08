@@ -57,4 +57,16 @@ public class CampControlling {
                 .collect(Collectors.toList());
     }
 
+    public int getTheExactDayOfTheHoliday(int month, int day){
+        int count = 0;
+        if(month == 6){
+            count = day - 16;
+        }else if(month == 7){
+            count = (30 - 16) + day;
+        }else{
+            count = (30 -16) + 31 + day;
+        }
+        return count;
+    }
+
 }
