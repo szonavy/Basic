@@ -45,4 +45,16 @@ public class CampControlling {
                 .collect(Collectors.toList());
     }
 
+    private int getTheMostInterestedStudents(){
+        return details.stream()
+                .mapToInt(l->l.students.length())
+                .reduce(0,Integer::max);
+    }
+
+    public List<CampDetails> getTheMostInterestedCampDetails(){
+        return details.stream()
+                .filter(l->l.students.length() == getTheMostInterestedStudents())
+                .collect(Collectors.toList());
+    }
+
 }

@@ -32,5 +32,12 @@ public class Main {
             }
         }
 
+        System.out.println("\nTask 4:");
+        System.out.println("The most interested camps are: ");
+        List<CampDetails> detail = controlling.getTheMostInterestedCampDetails();
+        for (CampDetails c : detail) {
+            System.out.println(c.startMonth + " " + c.startDay + " " + c.campName);
+        }
+
     }
 }
