@@ -69,4 +69,10 @@ public class CampControlling {
         return count;
     }
 
+    public long countTheCampsIsTheSameTime(int month, int day){
+        return details.stream()
+                .filter(l->getTheExactDayOfTheHoliday(l.startMonth,l.startDay) < getTheExactDayOfTheHoliday(month,day) && getTheExactDayOfTheHoliday(l.endMonth,l.endDay) > getTheExactDayOfTheHoliday(month,day))
+                .count();
+    }
+
 }

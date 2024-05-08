@@ -39,5 +39,8 @@ public class Main {
             System.out.println(c.startMonth + " " + c.startDay + " " + c.campName);
         }
 
+        System.out.println("\nTask 6:");
+        System.out.println("There are " + controlling.countTheCampsIsTheSameTime(8,1) + " camps at the same time.");
+
     }
 }
