@@ -4,6 +4,7 @@ import practice.mvc.camps.model.CampDetails;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CampControlling {
     public List<CampDetails> details = new ArrayList<>();
@@ -36,6 +37,12 @@ public class CampControlling {
     }
     public String getTheLastCampTheme(){
         return details.get(details.size()-1).campName;
+    }
+
+    public List<CampDetails> getTheRequestedCampDetails(String name){
+        return details.stream()
+                .filter(l->l.campName.equals(name))
+                .collect(Collectors.toList());
     }
 
 }

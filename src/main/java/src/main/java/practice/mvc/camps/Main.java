@@ -2,6 +2,7 @@ package practice.mvc.camps;
 
 import practice.a_common.MyFileReader;
 import practice.mvc.camps.controlling.CampControlling;
+import practice.mvc.camps.model.CampDetails;
 
 import java.util.List;
 
@@ -19,5 +20,17 @@ public class Main {
         System.out.println("The number od the camps: " + controlling.getTheNumberOfTheCamps());
         System.out.println("The theme of the first camp is : " + controlling.getTheFirstCampTheme());
         System.out.println("The theme of the last camp is : " + controlling.getTheLastCampTheme());
+
+        System.out.println("\nTask 3:");
+        String name = "zenei";
+        List<CampDetails> camps = controlling.getTheRequestedCampDetails(name);
+        if(camps.isEmpty()){
+            System.out.println("There weren't any camp in the requested theme.");
+        }else {
+            for (CampDetails c : camps) {
+                System.out.println("The " + name + " camps going to start " + c.startMonth + ".month " + c.startDay + ".day");
+            }
+        }
+
     }
 }
