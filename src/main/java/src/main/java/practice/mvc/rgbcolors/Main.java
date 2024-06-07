@@ -22,6 +22,19 @@ public class Main {
         RGBColorsData requested = controller.getTheRequestedColors(row,column);
         System.out.println("The colors of the pixel: RBG(" + requested.red + ", " + requested.green + ", " + requested.blue + ")");
 
+        System.out.println("\nTask 3:");
+        int pixelColor = 600;
+        System.out.println("The number of the light colors: " + controller.countTheLightColors(pixelColor));
+
+        System.out.println("\nTask 4:");
+        System.out.println(controller.theSmallestColor());
+        System.out.println(controller.getTheDarkestPoints());
+
+        System.out.println("\nTask 6:");
+        int differences = 10;
+        System.out.println("The first row of the cloud: " + controller.firstRowDifferences(differences));
+        System.out.println("The last row of the cloud: " + controller.lastRowDifferences(differences));
+
 
     }
 }

@@ -1,28 +1,25 @@
 package practice.mvc.rgbcolors.model;
 
 public class RGBColorsData {
-    public int row;
-    public int column;
     public int red;
     public int green;
     public int blue;
+    public int sum;
 
-    public RGBColorsData(int row, int column, int red, int green, int blue) {
-        this.row = row;
-        this.column = column;
+    public RGBColorsData( int red, int green, int blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
+        this.sum = red + green + blue;
     }
 
     @Override
     public String toString() {
         return "RGBColorsData{" +
-                "row=" + row +
-                ", column=" + column +
-                ", red=" + red +
+                "red=" + red +
                 ", green=" + green +
                 ", blue=" + blue +
+                ", sum=" + sum +
                 '}';
     }
 }
