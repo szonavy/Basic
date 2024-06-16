@@ -15,6 +15,9 @@ public class Main {
 
         System.out.println("\nTask 1:");
         System.out.println(controller.buildings);
+
+        System.out.println("\nTask 2:");
+        System.out.println("There are " + controller.countTheBuildings() + " buildings in the file.");
     }
 
 

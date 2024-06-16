@@ -18,4 +18,8 @@ public class BuildingTaxController {
             buildings.add(new BuildingTaxDetail(Integer.parseInt(cutTheRow[0]),cutTheRow[1],cutTheRow[2],cutTheRow[3].charAt(0), Integer.parseInt(cutTheRow[4])));
         }
     }
+
+    public int countTheBuildings(){
+        return buildings.size();
+    }
 }
