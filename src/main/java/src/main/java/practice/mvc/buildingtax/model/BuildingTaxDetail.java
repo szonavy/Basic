@@ -15,6 +15,26 @@ public class BuildingTaxDetail {
         this.square = square;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public Character getSection() {
+        return section;
+    }
+
+    public int getSquare() {
+        return square;
+    }
+
     @Override
     public String toString() {
         return "BuildingTaxDetail{" +

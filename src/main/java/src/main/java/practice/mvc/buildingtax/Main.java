@@ -18,6 +18,22 @@ public class Main {
 
         System.out.println("\nTask 2:");
         System.out.println("There are " + controller.countTheBuildings() + " buildings in the file.");
+
+        System.out.println("\nTask 3:");
+        int id = 68396;
+        List<String> address = controller.getTheRequestedOwnerAddress(id);
+        if(address.size() != 0){
+            for(String a : address){
+                System.out.println(a);
+            }
+        }else{
+            System.out.println("The id is not in the file.");
+        }
+
+        System.out.println("\nTask 5:");
+        System.out.println("a; " + controller.getTheNumberOfOwnerByTax());
+        System.out.println("b; " + controller.getTheNumberSectionByPlot());
+
     }
 
 
