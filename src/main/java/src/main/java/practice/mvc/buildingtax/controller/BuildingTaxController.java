@@ -2,10 +2,7 @@ package practice.mvc.buildingtax.controller;
 
 import practice.mvc.buildingtax.model.BuildingTaxDetail;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -71,5 +68,20 @@ public class BuildingTaxController {
             }
         }
         return number;
+    }
+    public Map<String, Set<Character>> getTheStreetBySection(){
+        Map<String, Set<Character>> streets = new HashMap<>();
+        for(BuildingTaxDetail d : buildings){
+            streets.computeIfAbsent(d.street,l->new HashSet<>()).add(d.section);
+        }
+        return streets;
+    }
+
+    public Map<Integer, Integer> getTheTaxByOwner(){
+        Map<Integer, Integer> taxByOwner = new HashMap<>();
+       for(BuildingTaxDetail d : buildings){
+           taxByOwner.put(d.ownerId,tax(d.section,d.square));
+       }
+       return taxByOwner;
     }
 }
